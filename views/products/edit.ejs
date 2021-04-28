@@ -1,0 +1,21 @@
+<%- include("./header.ejs") %>
+
+<h1>Edit new Product</h1>
+<div class="container">
+    <form action="/product/<%= product.id %>?_method=patch" method="post">
+        Name:
+        <input type="text" name="title" value="<%= product.title %>" />
+        <br /><br />
+        Price:
+        <input type="number" name="price" value="<%= product.price %>" />
+        <br /><br />
+        Description:
+        <textarea name="description" cols="30" rows="10"><%= product.description %></textarea>
+        <br /><br />
+        Image Url:
+        <input type="text" name="image" value="<%= product.image %>"/> <br /><br />
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+
+<%- include("./footer.ejs") %>
