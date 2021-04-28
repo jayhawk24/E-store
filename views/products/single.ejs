@@ -1,0 +1,11 @@
+<%- include("./header.ejs") %>
+
+<h1>Product</h1>
+<div class="container">
+    <h4><%= product.title %></h4>
+    <img src="<%= product.image%> " alt="" height="150px" width="250px" />
+    <p class="price"><%= product.price %></p>
+    <p class="description"><%= product.description %></p>
+</div>
+
+<%- include("./footer.ejs") %>

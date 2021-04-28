@@ -1,0 +1,15 @@
+<%- include("./header.ejs") %>
+
+<h1>Products</h1>
+<div class="container">
+    <% for(let prod of products){ %>
+    <a href="/product/<%= prod.id %>">
+        <h4><%= prod.title %></h4>
+        <img src="<%= prod.image%> " alt="" height="150px" width="250px" />
+        <p class="price">$<%= prod.price %></p>
+        <p class="description"><%= prod.description %></p>
+    </a>
+    <% } %>
+</div>
+
+<%- include("./footer.ejs") %>
