@@ -10,8 +10,7 @@
         <p class="description"><%= prod.description %></p>
     </a>
     <button><a href="/product/<%= prod.id %>/edit">Edit</a></button>
-    <button><a href="/product/<%= prod.id %>">View</a></button>
-    <form action="/product/<%= prod.id %>?_method=DELETE">
+    <form action="/product/<%= prod.id %>?_method=DELETE" method="POST">
         <input type="submit" value="Delete" />
     </form>
     <% } %>

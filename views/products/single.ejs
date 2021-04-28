@@ -6,6 +6,11 @@
     <img src="<%= product.image%> " alt="" height="150px" width="250px" />
     <p class="price"><%= product.price %></p>
     <p class="description"><%= product.description %></p>
+    <button><a href="/product/<%= product.id %>/edit">Edit</a></button>
+    <form action="/product/<%= product.id %>?_method=DELETE">
+        <input type="submit" value="Delete" />
+    </form>
+    <a href="/products"><button>Go Back</button></a>
 </div>
 
 <%- include("./footer.ejs") %>
