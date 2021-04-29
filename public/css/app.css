@@ -1,6 +1,5 @@
 .products {
     padding-top: 100px;
-    background-color: aliceblue;
     padding-bottom: 50px;
 }
 .products a {
@@ -88,9 +87,42 @@
     font-family: 'Roboto';
     color: #fff;
     opacity: 0;
-    transition: all 0.3s ease;
+    transition: all 0.1s ease;
 }
 .card:hover {
     transform: scale(1.01);
-    box-shadow: 5px 5px 100px #555;
+    box-shadow: 5px 5px 50px #555;
+}
+
+.head {
+    padding-top: 100px;
+    display: flex;
+    font-family: 1.5em;
+    justify-content: space-between;
+}
+
+.category,
+.delivery {
+    margin: 20px 50px;
+    color: #555;
+}
+.category {
+    word-spacing: 2em;
+    line-height: 1.5em;
+}
+.category span {
+    color: #181818;
+}
+.delivery i {
+    padding: 20px;
+    padding-top: 0px;
+    font-size: 1.5em;
+}
+.delivery {
+    font-size: 0.8em;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
 }

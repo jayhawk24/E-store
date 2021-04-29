@@ -1,16 +1,46 @@
 <%- include("./header.ejs") %> <%- include("./navbar.ejs") %>
 
-<h1>Product</h1>
+<section class="head">
+    <div class="category">
+        <i class="fa fa-home" aria-hidden="true"></i>
+        Food / Fruit / <span> Strawberries </span>
+    </div>
+    <div class="delivery">
+        <i class="fa fa-truck" aria-hidden="true"></i>
+        Standard Shipment.
+        <br />
+        Free within 3-6 business days.
+    </div>
+</section>
+
 <div class="container">
-    <h4><%= product.title %></h4>
-    <img src="<%= product.image%> " alt="" height="150px" width="250px" />
-    <p class="price"><%= product.price %></p>
-    <p class="description"><%= product.description %></p>
-    <button><a href="/product/<%= product.id %>/edit">Edit</a></button>
-    <form action="/product/<%= product.id %>?_method=DELETE">
-        <input type="submit" value="Delete" />
-    </form>
-    <a href="/products"><button>Go Back</button></a>
+    <div class="product-display">
+        <img src="<%= product.image%> " alt="" height="150px" width="250px" />
+    </div>
+
+    <div class="product-details">
+        <h4><%= product.title %></h4>
+        <p class="price"><%= product.price %></p>
+        Color :
+        <div class="colors">
+            <div class="blue"></div>
+            <div class="pink"></div>
+            <div class="red"></div>
+        </div>
+        <p class="description"><%= product.description %></p>
+        Quantity:
+        <div class="qty">
+            <input type="number" name="quantity" />
+            <button>Add To Cart</button>
+            <i class="fa fa-heart" aria-hidden="true"></i>
+        </div>
+        <div class="admin">
+            <button><a href="/product/<%= product.id %>/edit">Edit</a></button>
+            <form action="/product/<%= product.id %>?_method=DELETE">
+                <input type="submit" value="Delete" />
+            </form>
+        </div>
+    </div>
 </div>
 
 <%- include("./footer.ejs") %>
