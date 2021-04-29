@@ -1,19 +1,24 @@
-<%- include("./header.ejs") %>
+<%- include("./header.ejs") %> <%- include("./navbar.ejs") %>
+<div class="products">
+    <h2>Newest Products</h2>
 
-<h1>Products</h1>
-<div class="container">
-    <% for(let prod of products){ %>
-    <a href="/product/<%= prod.id %>">
-        <h4><%= prod.title %></h4>
-        <img src="<%= prod.image%> " alt="" height="150px" width="250px" />
-        <p class="price">$<%= prod.price %></p>
-        <p class="description"><%= prod.description %></p>
-    </a>
-    <button><a href="/product/<%= prod.id %>/edit">Edit</a></button>
-    <form action="/product/<%= prod.id %>?_method=DELETE" method="POST">
-        <input type="submit" value="Delete" />
-    </form>
-    <% } %>
+    <div class="cards-container">
+        <% for(let prod of products){ %>
+
+        <div class="card">
+            <div class="icons">
+                <i class="fa fa-heart" aria-hidden="true"></i>
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </div>
+            <img src="<%= prod.image %>" alt="" />
+            <a href="/product/<%= prod.id %>">
+                <div class="name"><%= prod.title %></div>
+                <div class="price">$<%= prod.price %></div>
+            </a>
+        </div>
+
+        <% } %>
+    </div>
 </div>
-
+<script src="/js/icons.js"></script>
 <%- include("./footer.ejs") %>
