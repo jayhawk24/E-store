@@ -13,59 +13,70 @@
     </div>
 </section>
 
-<div class="container">
+<div class="mcontainer">
     <div class="product-display">
-        <img src="<%= product.image%> " alt="" height="150px" width="250px" />
+        <img src="<%= product.image%> " alt="" />
+
+        <div class="admin">
+            <a href="/product/<%= product.id %>/edit?_method=PATCH">
+            <button class="btn-main">Edit</a>
+            </button>
+            <form action="/product/<%= product.id %>?_method=DELETE" method="POST">
+                <input type="submit" class="btn-main" value="Delete" >
+            </form>
+        </div>
     </div>
 
     <div class="product-wrap">
         <div class="product-details">
             <h4><%= product.title %></h4>
-            <p class="price"><%= product.price %></p>
-            Color :
-            <div class="colors">
-                <div class="blue"></div>
-                <div class="pink"></div>
-                <div class="red"></div>
-            </div>
+            <p class="price">$<%= product.price %></p>
             <p class="description"><%= product.description %></p>
-            Quantity:
+            <label for="quantity">Quantity: </label>
             <div class="qty">
-                <input type="number" name="quantity" />
-                <button>Add To Cart</button>
+                <input type="number" name="quantity" value="1" />
+
+                <button class="btn-main">Add To Cart</button>
                 <i class="fa fa-heart" aria-hidden="true"></i>
             </div>
-            <div class="admin">
-                <button>
-                    <a href="/product/<%= product.id %>/edit">Edit</a>
-                </button>
-                <form action="/product/<%= product.id %>?_method=DELETE">
-                    <input type="submit" value="Delete" />
-                </form>
-            </div>
+
         </div>
         <div class="reviews-wrap">
             <div class="reviews-form">
-                <form action="/product/<%= product.id %>/review" method="post">
-                    <label for="author">Name:</label>
-                    <input type="text" name="author" />
-                    <br /><br />
-                    <label for="Review">Review:</label>
-                    <input type="text" name="review" />
-                    <br /><br />
-                    <input type="submit" value="Submit" />
+                <h4 class="mt-5">Leave a Review</h4>
+                <form class="mb-5 row g-3 needs-validation" action="/product/<%= product.id %>/review" method="post" novalidate>
+                <div class="mb-3 col-6">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="author" placeholder="Username" class="form-control" id="username" required
+                    />
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="review" class="form-label">Review </label>
+                    <input type="text" name="review" placeholder="Review" class="form-control" id="review" required/>
+                </div><br>
+                <input
+                    type="submit"
+                    value="Submit"
+                    class="mb-3 ml-3 btn btn-secondary col-3"
+                />
                 </form>
             </div>
             <div class="reviews">
-                <% for(let c of product.reviews){ %>
-                <div class="card">
-                    <div class="review"><%= c.review %></div>
-                    <div class="author"><%= c.author %></div>
-                </div>
+
+            <div class="card mb-5">
+                <div class="card-header">Reviews</div>
+                <% for(let c of product.reviews){ %>        
+                    <blockquote class="blockquote ml-3 mb-3">
+                        <p><%= c.review %></p>
+                        <div class="blockquote-footer">
+                            <cite title="Source Title"><%= c.author %></cite>
+                        </div>
+                    </blockquote>
                 <% } %>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <%- include("./footer.ejs") %>

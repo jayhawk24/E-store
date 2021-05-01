@@ -1,21 +1,65 @@
 <%- include("./header.ejs") %> <%- include("./navbar.ejs") %>
 
-<h1>Insert new Product</h1>
 <div class="container">
-    <form action="/new" method="post">
-        Name:
-        <input type="text" name="title" />
+    <h1 style="padding-top: 100px">New Blog</h1>
+
+    <form
+        method="post"
+        action="/blog"
+        class="row g-3 needs-validation"
+        novalidate
+    >
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                class="form-control"
+                id="title"
+                required
+            />
+        </div>
         <br /><br />
-        Price:
-        <input type="number" name="price" />
+        <label for="title" class="form-label">Price</label>
+        <input
+            type="number"
+            name="price"
+            placeholder="Title"
+            class="form-control"
+            id="number"
+            required
+        />
+
         <br /><br />
-        Description:
-        <textarea name="description" cols="30" rows="10"></textarea>
+        <div class="mb-3">
+            <label for="image" class="form-label">Blog Image URL</label>
+            <input
+                type="text"
+                name="image"
+                placeholder="Image"
+                class="form-control"
+                id="image"
+            />
+        </div>
         <br /><br />
-        Image Url:
-        <input type="text" name="image" />
-        <br /><br />
-        <input type="submit" value="Submit" />
+
+        <div class="mb-3">
+            <label for="desc" class="form-label">Description</label>
+            <textarea
+                name="description"
+                placeholder="Description"
+                class="form-control"
+                id="desc"
+                rows="12"
+                required
+            ></textarea>
+        </div>
+        <input
+            class="col-3 btn btn-primary mb-5"
+            type="submit"
+            value="Submit"
+        />
     </form>
     <a href="/products"><button>Go Back</button></a>
 </div>

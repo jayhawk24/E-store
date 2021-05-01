@@ -1,3 +1,48 @@
+*,
+a,
+a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.btn-main {
+    padding: 15px 40px;
+    border-radius: 40px;
+    color: #000;
+    font-family: 'oswald';
+    font-weight: lighter;
+    font-size: 1.1em;
+    background-color: #ec9f05;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
+}
+
+.btn-main:after {
+    font-family: 'FontAwesome';
+    content: '\f105';
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 900;
+    position: absolute;
+    opacity: 0;
+    top: 12px;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.btn-main:hover {
+    padding-right: 50px;
+    padding-left: 30px;
+}
+
+.btn-main:hover:after {
+    opacity: 1;
+    right: 20px;
+}
+
 .products {
     padding-top: 100px;
     padding-bottom: 50px;
@@ -20,7 +65,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
 }
-.card {
+.product-card {
     min-width: 200px;
     max-width: 280px;
     background-color: #fff;
@@ -34,7 +79,7 @@
     position: relative;
     transition: all 0.3s ease-in;
 }
-.card .icons i {
+.icons i {
     margin: 15px;
     position: absolute;
     top: 0px;
@@ -58,7 +103,7 @@
     background-color: #ec9f05 !important;
     color: #fff !important;
 }
-.card img {
+.product-card img {
     height: 100%;
     max-height: 300px;
 }
@@ -76,7 +121,7 @@
     text-align: center;
     color: #000;
 }
-.card button {
+.product-card button {
     width: 100%;
     background-color: #ff4e00;
     background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
@@ -89,7 +134,7 @@
     opacity: 0;
     transition: all 0.1s ease;
 }
-.card:hover {
+.product-card:hover {
     transform: scale(1.01);
     box-shadow: 5px 5px 50px #555;
 }
@@ -121,8 +166,79 @@
 .delivery {
     font-size: 0.8em;
 }
-.container {
-    width: 80%;
-    margin: 0 auto;
+.mcontainer {
+    width: 90%;
     display: flex;
+    justify-content: center;
+}
+.product-display {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.product-display img {
+    margin-top: 20px;
+    width: 100%;
+}
+.product-wrap {
+    padding-left: 50px;
+}
+.product-details {
+    font-family: 'Roboto';
+    font-size: 1.2em;
+    max-width: 800px;
+}
+.product-details > * {
+    font-family: 'Roboto';
+}
+.product-details h4 {
+    font-family: 'Oswald';
+    font-size: 2em;
+}
+.product-details .price {
+    text-align: left;
+    font-size: 1.5em;
+    color: #ec9f05;
+    margin-bottom: 40px;
+}
+.product-details .description {
+    margin-bottom: 40px;
+}
+.product-details .qty input {
+    width: 100px;
+    border-radius: 30px;
+    text-align: center;
+    font-family: 1.5em;
+    padding: 10px;
+    margin: 5px;
+}
+.product-details .btn-main {
+    margin: 0 20px;
+}
+.product-details i {
+    padding: 10px;
+    border: 1px solid #555;
+    font-size: 1.2em;
+    padding: 12px;
+    border-radius: 50%;
+    color: #181818;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 40px;
+}
+.admin {
+    display: flex;
+    margin: 20px;
+}
+.admin button {
+    background-color: royalblue;
+    margin-right: 40px;
+}
+.reviews-wrap h4 {
+    font-family: 'Roboto';
+    font-size: 1.3em;
+    margin: 20px 0px 40px;
 }

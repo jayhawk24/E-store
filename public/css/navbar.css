@@ -1,4 +1,5 @@
-* {
+*,
+html {
     margin: 0px;
     padding: 0px;
     font-family: 'Roboto';
@@ -46,7 +47,7 @@ nav li {
     font-family: 'Roboto';
     font-size: 1.2em;
 }
-nav .icons {
+nav .icons-user {
     display: flex;
     justify-content: center;
     background-color: transparent;
@@ -56,7 +57,7 @@ nav .icons {
     flex-grow: 1;
     font-size: 1.2em;
 }
-nav .icons i {
+nav .icons-user i {
     cursor: pointer;
     font-size: 1.2em;
     padding: 10px;

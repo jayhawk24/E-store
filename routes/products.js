@@ -1,8 +1,11 @@
 const express = require('express');
 const Product = require('../models/product');
 const Review = require('../models/review');
+const methodOverride = require('method-override');
 
 const router = express.Router();
+
+router.use(methodOverride('_method'));
 
 router.get('/products', async (req, res) => {
     const products = await Product.find({});
