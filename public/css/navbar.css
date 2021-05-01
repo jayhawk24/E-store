@@ -107,11 +107,13 @@ footer {
     top: 9.5em;
     left: 49%; /*Mobile */
     transform: rotate(90deg);
+    background-color: #fff;
 }
 .sideline {
     float: left;
     margin-top: 2.35em;
     width: 15%;
+    background-color: #fff;
 }
 .sideline:first-child {
     margin-left: 10%;

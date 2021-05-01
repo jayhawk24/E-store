@@ -1,7 +1,7 @@
 <%- include("./header.ejs") %> <%- include("./navbar.ejs") %>
 
 <div class="container">
-    <h1 style="padding-top: 100px">New Blog</h1>
+    <h1 style="padding-top: 100px">New Product</h1>
 
     <form
         method="post"
@@ -9,7 +9,7 @@
         class="row g-3 needs-validation"
         novalidate
     >
-        <div class="mb-3">
+        <div class="mb-3 col-6">
             <label for="title" class="form-label">Title</label>
             <input
                 type="text"
@@ -21,18 +21,20 @@
             />
         </div>
         <br /><br />
-        <label for="title" class="form-label">Price</label>
-        <input
-            type="number"
-            name="price"
-            placeholder="Title"
-            class="form-control"
-            id="number"
-            required
-        />
 
+        <div class="mb-3 col-6">
+            <label for="title" class="form-label">Price</label>
+            <input
+                type="number"
+                name="price"
+                placeholder="Title"
+                class="form-control"
+                id="number"
+                required
+            />
+        </div>
         <br /><br />
-        <div class="mb-3">
+        <div class="mb-3 col-12">
             <label for="image" class="form-label">Blog Image URL</label>
             <input
                 type="text"
@@ -44,7 +46,7 @@
         </div>
         <br /><br />
 
-        <div class="mb-3">
+        <div class="mb-3 col-12">
             <label for="desc" class="form-label">Description</label>
             <textarea
                 name="description"
@@ -56,12 +58,11 @@
             ></textarea>
         </div>
         <input
-            class="col-3 btn btn-primary mb-5"
+            class="col-3 btn btn-primary mb-5 ml-3"
             type="submit"
             value="Submit"
         />
     </form>
-    <a href="/products"><button>Go Back</button></a>
 </div>
 
 <%- include("./footer.ejs") %>
