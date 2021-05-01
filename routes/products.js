@@ -1,5 +1,6 @@
 const express = require('express');
 const Product = require('../models/product');
+const Review = require('../models/review');
 
 const router = express.Router();
 
@@ -9,7 +10,7 @@ router.get('/products', async (req, res) => {
 });
 router.get('/product/:id', async (req, res) => {
     const { id } = req.params;
-    const product = await Product.findById(id);
+    const product = await Product.findById(id).populate('reviews');
     res.render('products/single', { product });
 });
 router.get('/new', (req, res) => {
@@ -22,6 +23,19 @@ router.post('/new', async (req, res) => {
     const newProd = req.body;
     await Product.create(newProd);
     res.redirect('/products');
+});
+
+// Create new Review
+router.post('/product/:id/review', async (req, res) => {
+    const { id } = req.params;
+    const review = new Review(req.body);
+    const product = await Product.findById(id);
+
+    product.reviews.push(review);
+    await review.save();
+    await product.save();
+
+    res.redirect(`/product/${id}`);
 });
 
 // Edit existing product

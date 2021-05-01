@@ -18,27 +18,52 @@
         <img src="<%= product.image%> " alt="" height="150px" width="250px" />
     </div>
 
-    <div class="product-details">
-        <h4><%= product.title %></h4>
-        <p class="price"><%= product.price %></p>
-        Color :
-        <div class="colors">
-            <div class="blue"></div>
-            <div class="pink"></div>
-            <div class="red"></div>
+    <div class="product-wrap">
+        <div class="product-details">
+            <h4><%= product.title %></h4>
+            <p class="price"><%= product.price %></p>
+            Color :
+            <div class="colors">
+                <div class="blue"></div>
+                <div class="pink"></div>
+                <div class="red"></div>
+            </div>
+            <p class="description"><%= product.description %></p>
+            Quantity:
+            <div class="qty">
+                <input type="number" name="quantity" />
+                <button>Add To Cart</button>
+                <i class="fa fa-heart" aria-hidden="true"></i>
+            </div>
+            <div class="admin">
+                <button>
+                    <a href="/product/<%= product.id %>/edit">Edit</a>
+                </button>
+                <form action="/product/<%= product.id %>?_method=DELETE">
+                    <input type="submit" value="Delete" />
+                </form>
+            </div>
         </div>
-        <p class="description"><%= product.description %></p>
-        Quantity:
-        <div class="qty">
-            <input type="number" name="quantity" />
-            <button>Add To Cart</button>
-            <i class="fa fa-heart" aria-hidden="true"></i>
-        </div>
-        <div class="admin">
-            <button><a href="/product/<%= product.id %>/edit">Edit</a></button>
-            <form action="/product/<%= product.id %>?_method=DELETE">
-                <input type="submit" value="Delete" />
-            </form>
+        <div class="reviews-wrap">
+            <div class="reviews-form">
+                <form action="/product/<%= product.id %>/review" method="post">
+                    <label for="author">Name:</label>
+                    <input type="text" name="author" />
+                    <br /><br />
+                    <label for="Review">Review:</label>
+                    <input type="text" name="review" />
+                    <br /><br />
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+            <div class="reviews">
+                <% for(let c of product.reviews){ %>
+                <div class="card">
+                    <div class="review"><%= c.review %></div>
+                    <div class="author"><%= c.author %></div>
+                </div>
+                <% } %>
+            </div>
         </div>
     </div>
 </div>
