@@ -65,14 +65,16 @@
 
             <div class="card mb-5">
                 <div class="card-header">Reviews</div>
-                <% for(let c of product.reviews){ %>        
-                    <blockquote class="blockquote ml-3 mb-3">
-                        <p><%= c.review %></p>
-                        <div class="blockquote-footer">
-                            <cite title="Source Title"><%= c.author %></cite>
-                        </div>
-                    </blockquote>
-                <% } %>
+                <% if (product.reviews.length !== 0){ %> 
+                    <% for(let c of product.reviews){ %>        
+                        <blockquote class="blockquote ml-3 mb-3">
+                            <p><%= c.review %></p>
+                            <div class="blockquote-footer">
+                                <cite title="Source Title"><%= c.author %></cite>
+                            </div>
+                        </blockquote>
+                    <% } %>
+                <% } %> 
             </div>
         </div>
     </div>

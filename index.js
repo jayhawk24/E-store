@@ -20,7 +20,9 @@ mongoose.connect('mongodb://localhost:27017/ecommerce', {
 // seed();
 
 app.use(productRoutes);
-
+app.get('/', (req, res) => {
+    res.redirect('/products');
+});
 app.listen(3000, () => {
     console.log('Server running on port 3000.');
 });

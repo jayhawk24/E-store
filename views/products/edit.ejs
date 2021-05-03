@@ -1,23 +1,73 @@
 <%- include("./header.ejs") %> <%- include("./navbar.ejs") %>
 
 
-<h1>Edit new Product</h1>
+
 <div class="container">
-    <form action="/product/<%= product.id %>?_method=patch" method="post">
-        Name:
-        <input type="text" name="title" value="<%= product.title %>" />
+    <h1 style="padding-top: 150px">Edit Product</h1>
+
+    <form
+        action="/product/<%= product.id %>?_method=patch" 
+        method="post"
+        class="row g-3 needs-validation"
+        novalidate
+    >
+        <div class="mb-3 col-6">
+            <label for="title" class="form-label">Title</label>
+            <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                class="form-control"
+                id="title"
+                value="<%= product.title %>"
+                required
+            />
+        </div>
         <br /><br />
-        Price:
-        <input type="number" name="price" value="<%= product.price %>" />
+
+        <div class="mb-3 col-6">
+            <label for="title" class="form-label">Price</label>
+            <input
+                type="number"
+                name="price"
+                placeholder="Price"
+                class="form-control"
+                id="number"
+                value="<%= product.price %>"
+                required
+            />
+        </div>
         <br /><br />
-        Description:
-        <textarea name="description" cols="30" rows="10"><%= product.description %></textarea>
+        <div class="mb-3 col-12">
+            <label for="image" class="form-label">Blog Image URL</label>
+            <input
+                type="text"
+                name="image"
+                placeholder="Image"
+                class="form-control"
+                id="image"
+                value="<%= product.image %>"
+            />
+        </div>
         <br /><br />
-        Image Url:
-        <input type="text" name="image" value="<%= product.image %>"/> <br /><br />
-        <input type="submit" value="Submit" />
+
+        <div class="mb-3 col-12">
+            <label for="desc" class="form-label">Description</label>
+            <textarea
+                name="description"
+                placeholder="Description"
+                class="form-control"
+                id="desc"
+                rows="12"
+                required
+            ><%= product.description %></textarea>
+        </div>
+        <input
+            class="col-3 btn btn-primary mb-5 ml-3"
+            type="submit"
+            value="Submit"
+        />
     </form>
-        <a href="/products"><button>Go Back</button></a>
 </div>
 
 <%- include("./footer.ejs") %>

@@ -4,8 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "nodemon index.js",
-        "ui": "browser-sync start --files='**/*.css, **/*.ejs, **/*.js' --ignore=node_modules --reload-delay 10 --no-ui --no-notify"
+        "start": "nodemon index.js"
     },
     "repository": {
         "type": "git",
