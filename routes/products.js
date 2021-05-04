@@ -13,7 +13,8 @@ router.get('/products', async (req, res) => {
         res.render('products/index', { products });
     } catch (error) {
         console.log(error);
-        res.status(500).send('Internal server error 500');
+        req.flash('error', 'Cannot Find Products');
+        res.status(500).render('error');
     }
 });
 router.get('/product/:id', async (req, res) => {
@@ -23,7 +24,7 @@ router.get('/product/:id', async (req, res) => {
         res.render('products/single', { product });
     } catch (error) {
         console.log(error);
-        res.status(500).send('Internal server error 500');
+        res.status(500).render('error');
     }
 });
 router.get('/products/new', (req, res) => {
@@ -31,7 +32,7 @@ router.get('/products/new', (req, res) => {
         res.render('products/new');
     } catch (error) {
         console.log(error);
-        res.status(500).send('Internal server error 500');
+        res.status(500).render('error');
     }
 });
 
@@ -39,12 +40,15 @@ router.get('/products/new', (req, res) => {
 
 router.post('/products/new', async (req, res) => {
     try {
-        const newProd = req.body;
+        const newProd = req.body.product;
         await Product.create(newProd);
+        req.flash('success', 'Successfully created new product');
         res.redirect('/products');
     } catch (error) {
         console.log(error);
-        res.status(500).send('Internal server error 500');
+        req.flash('error', 'Cannot Create Products,Something is Wrong');
+
+        res.status(500).render('error');
     }
 });
 
@@ -59,10 +63,14 @@ router.post('/product/:id/review', async (req, res) => {
         await review.save();
         await product.save();
 
+        req.flash('success', 'Successfully added new review');
+
         res.redirect(`/product/${id}`);
     } catch (error) {
         console.log(error);
-        res.status(500).send('Internal server error 500');
+        req.flash('error', 'Cannot add review to this Product');
+
+        res.status(500).render('error');
     }
 });
 
@@ -74,20 +82,22 @@ router.get('/product/:id/edit', async (req, res) => {
         res.render('products/edit', { product });
     } catch (error) {
         console.log(error);
-        res.status(500).send('Internal server error 500');
+        req.flash('error', 'Cannot update this Product');
+        res.status(500).render('error');
     }
 });
 router.patch('/product/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const product = await Product.findByIdAndUpdate(id, req.body, {
-            useFindAndModify: true
-        });
+        await Product.findByIdAndUpdate(id, req.body.product);
+
+        req.flash('success', 'Successfully updated product');
 
         res.redirect(`/product/${id}`);
     } catch (error) {
         console.log(error);
-        res.status(500).send('Internal server error 500');
+        req.flash('error', 'Cannot update this Product');
+        res.status(500).render('error');
     }
 });
 
@@ -95,11 +105,14 @@ router.patch('/product/:id', async (req, res) => {
 router.delete('/product/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        await Product.findByIdAndDelete(id, { useFindAndModify: true });
+        await Product.findByIdAndDelete(id);
+        req.flash('success', 'Successfully deleted product');
+
         res.redirect('/products');
     } catch (error) {
         console.log(error);
-        res.status(500).send('Internal server error 500');
+        req.flash('error', 'Cannot delete this Product');
+        res.status(500).render('error');
     }
 });
 

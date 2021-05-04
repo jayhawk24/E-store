@@ -1,4 +1,6 @@
-<%- include("./header.ejs") %> <%- include("./navbar.ejs") %>
+<%- include("../partials/header") %> <%- include("../partials/navbar") %>
+
+<div class="container"><%- include('../partials/flash') %></div>
 
 <section class="head">
     <div class="category">
@@ -19,10 +21,13 @@
 
         <div class="admin">
             <a href="/product/<%= product.id %>/edit?_method=PATCH">
-            <button class="btn-main">Edit</a>
-            </button>
-            <form action="/product/<%= product.id %>?_method=DELETE" method="POST">
-                <input type="submit" class="btn-main" value="Delete" >
+                <button class="btn-main">Edit</button></a
+            >
+            <form
+                action="/product/<%= product.id %>?_method=DELETE"
+                method="POST"
+            >
+                <input type="submit" class="btn-main" value="Delete" />
             </form>
         </div>
     </div>
@@ -39,46 +44,63 @@
                 <button class="btn-main">Add To Cart</button>
                 <i class="fa fa-heart" aria-hidden="true"></i>
             </div>
-
         </div>
         <div class="reviews-wrap">
             <div class="reviews-form">
                 <h4 class="mt-5">Leave a Review</h4>
-                <form class="mb-5 row g-3 needs-validation" action="/product/<%= product.id %>/review" method="post" novalidate>
-                <div class="mb-3 col-6">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" name="author" placeholder="Username" class="form-control" id="username" required
+                <form
+                    class="mb-5 row g-3 needs-validation"
+                    action="/product/<%= product.id %>/review"
+                    method="post"
+                    novalidate
+                >
+                    <div class="mb-3 col-6">
+                        <label for="username" class="form-label"
+                            >Username</label
+                        >
+                        <input
+                            type="text"
+                            name="author"
+                            placeholder="Username"
+                            class="form-control"
+                            id="username"
+                            required
+                        />
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label for="review" class="form-label">Review </label>
+                        <input
+                            type="text"
+                            name="review"
+                            placeholder="Review"
+                            class="form-control"
+                            id="review"
+                            required
+                        />
+                    </div>
+                    <br />
+                    <input
+                        type="submit"
+                        value="Submit"
+                        class="mb-3 ml-3 btn btn-secondary col-3"
                     />
-                </div>
-                <div class="mb-3 col-6">
-                    <label for="review" class="form-label">Review </label>
-                    <input type="text" name="review" placeholder="Review" class="form-control" id="review" required/>
-                </div><br>
-                <input
-                    type="submit"
-                    value="Submit"
-                    class="mb-3 ml-3 btn btn-secondary col-3"
-                />
                 </form>
             </div>
             <div class="reviews">
-
-            <div class="card mb-5">
-                <div class="card-header">Reviews</div>
-                <% if (product.reviews.length !== 0){ %> 
-                    <% for(let c of product.reviews){ %>        
-                        <blockquote class="blockquote ml-3 mb-3">
-                            <p><%= c.review %></p>
-                            <div class="blockquote-footer">
-                                <cite title="Source Title"><%= c.author %></cite>
-                            </div>
-                        </blockquote>
-                    <% } %>
-                <% } %> 
+                <div class="card mb-5">
+                    <div class="card-header">Reviews</div>
+                    <% if (product.reviews.length !== 0){ %> <% for(let c of
+                    product.reviews){ %>
+                    <blockquote class="blockquote ml-3 mb-3">
+                        <p><%= c.review %></p>
+                        <div class="blockquote-footer">
+                            <cite title="Source Title"><%= c.author %></cite>
+                        </div>
+                    </blockquote>
+                    <% } %> <% } %>
+                </div>
             </div>
         </div>
     </div>
+    <%- include("../partials/footer") %>
 </div>
-</div>
-
-<%- include("./footer.ejs") %>

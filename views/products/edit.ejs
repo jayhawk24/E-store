@@ -1,5 +1,4 @@
-<%- include("./header.ejs") %> <%- include("./navbar.ejs") %>
-
+<%- include("../partials/header") %> <%- include("../partials/navbar") %>
 
 
 <div class="container">
@@ -15,7 +14,7 @@
             <label for="title" class="form-label">Title</label>
             <input
                 type="text"
-                name="title"
+                name="product[title]"
                 placeholder="Title"
                 class="form-control"
                 id="title"
@@ -29,7 +28,7 @@
             <label for="title" class="form-label">Price</label>
             <input
                 type="number"
-                name="price"
+                name="product[price]"
                 placeholder="Price"
                 class="form-control"
                 id="number"
@@ -42,7 +41,7 @@
             <label for="image" class="form-label">Blog Image URL</label>
             <input
                 type="text"
-                name="image"
+                name="product[image]"
                 placeholder="Image"
                 class="form-control"
                 id="image"
@@ -54,7 +53,7 @@
         <div class="mb-3 col-12">
             <label for="desc" class="form-label">Description</label>
             <textarea
-                name="description"
+                name="product[description]"
                 placeholder="Description"
                 class="form-control"
                 id="desc"
@@ -69,5 +68,4 @@
         />
     </form>
 </div>
-
-<%- include("./footer.ejs") %>
+<%- include("../partials/footer") %>

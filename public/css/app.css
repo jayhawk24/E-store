@@ -44,7 +44,6 @@ a:hover {
 }
 
 .products {
-    padding-top: 100px;
     padding-bottom: 50px;
 }
 .products a {
@@ -140,7 +139,6 @@ a:hover {
 }
 
 .head {
-    padding-top: 100px;
     display: flex;
     font-family: 1.5em;
     justify-content: space-between;
