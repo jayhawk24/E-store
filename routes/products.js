@@ -56,7 +56,10 @@ router.post('/products/new', async (req, res) => {
 router.post('/product/:id/review', async (req, res) => {
     try {
         const { id } = req.params;
-        const review = new Review(req.body);
+        const review = new Review({
+            user: req.user.username,
+            ...req.body
+        });
         const product = await Product.findById(id);
 
         product.reviews.push(review);

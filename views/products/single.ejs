@@ -55,27 +55,24 @@
                     novalidate
                 >
                     <div class="mb-3 col-6">
-                        <label for="username" class="form-label"
-                            >Username</label
-                        >
+                        <label for="rating" class="form-label">Rating</label>
                         <input
-                            type="text"
-                            name="author"
-                            placeholder="Username"
-                            class="form-control"
-                            id="username"
-                            required
+                            type="range"
+                            class="form-range"
+                            min="1"
+                            max="5"
+                            name="rating"
+                            id="rating"
                         />
                     </div>
-                    <div class="mb-3 col-6">
-                        <label for="review" class="form-label">Review </label>
+                    <div class="mb-3 col-12">
+                        <label for="review" class="form-label">Comment </label>
                         <input
                             type="text"
                             name="review"
                             placeholder="Review"
                             class="form-control"
                             id="review"
-                            required
                         />
                     </div>
                     <br />
@@ -92,9 +89,19 @@
                     <% if (product.reviews.length !== 0){ %> <% for(let c of
                     product.reviews){ %>
                     <blockquote class="blockquote ml-3 mb-3">
-                        <p><%= c.review %></p>
+                        <div class="row mr-2">
+                            <p class="col-6"><%= c.review %></p>
+                            <p class="col-6 text-right">
+                                <% for(let i=0; i < 5;i++){ if(c.rating){
+                                c.rating--; %>
+                                <i class="fa fa-star"></i>
+                                <% }else{ %>
+                                <i class="fa fa-star-o"></i>
+                                <% }} %>
+                            </p>
+                        </div>
                         <div class="blockquote-footer">
-                            <cite title="Source Title"><%= c.author %></cite>
+                            <cite title="Source Title"><%= c.user %></cite>
                         </div>
                     </blockquote>
                     <% } %> <% } %>
