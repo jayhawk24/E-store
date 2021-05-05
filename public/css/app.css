@@ -36,6 +36,7 @@ a:hover {
 .btn-main:hover {
     padding-right: 50px;
     padding-left: 30px;
+    font-weight: normal;
 }
 
 .btn-main:hover:after {

@@ -1,24 +1,22 @@
 <%- include("../partials/header")%> <%- include("../partials/navbar")%>
-<div
-    class="container"
-    style="margin-top: 5rem; width: 80vw; margin-bottom: 11rem"
->
+<div class="container" style="margin-top: 5rem; margin-bottom: 11rem">
     <%- include('../partials/flash') %>
-    <h1 class="">Sign Up</h1>
+    <h1 class="mb-5">Sign Up</h1>
     <form
-        class="validated-form"
+        class="needs-validation"
         action="/register"
         method="POST"
         style="max-width: 70%; margin: 10px auto"
+        oninput='password2.setCustomValidity(password2.value != password.value ? "Passwords do not match." : "")'
         novalidate
     >
         <div class="mb-3">
-            <label for="username" class="form-label">username</label>
+            <label for="username" class="form-label">Username</label>
             <input
                 type="text"
                 class="form-control"
                 id="username"
-                placeholder="User Name"
+                placeholder="Username"
                 name="username"
                 required
             />
@@ -42,8 +40,20 @@
                 type="password"
                 class="form-control"
                 id="password"
-                placeholder="password"
+                placeholder="Password"
                 name="password"
+                required
+            />
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="mb-3">
+            <label for="password2" class="form-label">Confirm Password </label>
+            <input
+                type="password"
+                class="form-control"
+                id="password2"
+                placeholder="Confirm Password"
+                name="password2"
                 required
             />
             <div class="valid-feedback">Looks good!</div>

@@ -4,21 +4,15 @@
     style="margin-top: 5rem; width: 80vw; margin-bottom: 11rem"
 >
     <%- include('../partials/flash') %>
-    <h1 class="">Login</h1>
-    <form
-        class="validated-form"
-        action="/login"
-        method="POST"
-        style="max-width: 70%; margin: 10px auto"
-        novalidate
-    >
+    <h1 class="mb-3">Login</h1>
+    <form class="needs-validation" action="/login" method="POST" novalidate>
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input
                 type="text"
                 class="form-control"
                 id="username"
-                placeholder="User Name"
+                placeholder="Username"
                 name="username"
                 required
             />
@@ -26,21 +20,21 @@
         </div>
 
         <div class="mb-3">
-            <label for="password" class="form-label">Password </label>
+            <label for="password" class="form-label">Password</label>
             <input
                 type="password"
                 class="form-control"
                 id="password"
-                placeholder="password"
+                placeholder="Password"
                 name="password"
                 required
             />
             <div class="valid-feedback">Looks good!</div>
         </div>
 
-        <button type="submit" class="btn btn-success">Login</button>
+        <button type="submit" class="btn btn-main">Login</button>
+        <a class="btn btn-main blue" href="/register">Sign Up</a>
     </form>
-    <a class="btn btn-primary" href="/register">Sign Up</a>
 </div>
 
 <%- include("../partials/footer")%>
