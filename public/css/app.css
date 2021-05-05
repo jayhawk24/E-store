@@ -240,3 +240,7 @@ a:hover {
     font-size: 1.3em;
     margin: 20px 0px 40px;
 }
+.rating i {
+    cursor: pointer;
+    color: #ec9f05;
+}

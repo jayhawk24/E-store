@@ -91,7 +91,7 @@
                     <blockquote class="blockquote ml-3 mb-3">
                         <div class="row mr-2">
                             <p class="col-6"><%= c.review %></p>
-                            <p class="col-6 text-right">
+                            <p class="col-6 text-right rating">
                                 <% for(let i=0; i < 5;i++){ if(c.rating){
                                 c.rating--; %>
                                 <i class="fa fa-star"></i>
@@ -109,5 +109,5 @@
             </div>
         </div>
     </div>
-    <%- include("../partials/footer") %>
 </div>
+<%- include("../partials/footer") %>

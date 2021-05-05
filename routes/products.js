@@ -2,8 +2,8 @@ const express = require('express');
 const Product = require('../models/product');
 const Review = require('../models/review');
 const methodOverride = require('method-override');
-
 const router = express.Router();
+const isLoggedIn = require('../middlewares/isLoggedIn');
 
 router.use(methodOverride('_method'));
 
@@ -27,7 +27,7 @@ router.get('/product/:id', async (req, res) => {
         res.status(500).render('error');
     }
 });
-router.get('/products/new', (req, res) => {
+router.get('/products/new', isLoggedIn, (req, res) => {
     try {
         res.render('products/new');
     } catch (error) {
@@ -38,7 +38,7 @@ router.get('/products/new', (req, res) => {
 
 // Create new product
 
-router.post('/products/new', async (req, res) => {
+router.post('/products/new', isLoggedIn, async (req, res) => {
     try {
         const newProd = req.body.product;
         await Product.create(newProd);
@@ -53,7 +53,7 @@ router.post('/products/new', async (req, res) => {
 });
 
 // Create new Review
-router.post('/product/:id/review', async (req, res) => {
+router.post('/product/:id/review', isLoggedIn, async (req, res) => {
     try {
         const { id } = req.params;
         const review = new Review({
@@ -72,13 +72,12 @@ router.post('/product/:id/review', async (req, res) => {
     } catch (error) {
         console.log(error);
         req.flash('error', 'Cannot add review to this Product');
-
         res.status(500).render('error');
     }
 });
 
 // Edit existing product
-router.get('/product/:id/edit', async (req, res) => {
+router.get('/product/:id/edit', isLoggedIn, async (req, res) => {
     try {
         const { id } = req.params;
         const product = await Product.findById(id);
@@ -89,7 +88,7 @@ router.get('/product/:id/edit', async (req, res) => {
         res.status(500).render('error');
     }
 });
-router.patch('/product/:id', async (req, res) => {
+router.patch('/product/:id', isLoggedIn, async (req, res) => {
     try {
         const { id } = req.params;
         await Product.findByIdAndUpdate(id, req.body.product);
@@ -105,7 +104,7 @@ router.patch('/product/:id', async (req, res) => {
 });
 
 // Delete Product
-router.delete('/product/:id', async (req, res) => {
+router.delete('/product/:id', isLoggedIn, async (req, res) => {
     try {
         const { id } = req.params;
         await Product.findByIdAndDelete(id);

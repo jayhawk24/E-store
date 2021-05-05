@@ -4,7 +4,9 @@ html {
     padding: 0px;
     font-family: 'Roboto';
 }
-
+body {
+    min-height: 100%;
+}
 nav {
     display: flex;
     flex-wrap: wrap;
@@ -60,6 +62,7 @@ nav li {
     border-radius: 10px;
     margin: 5px;
     transition: all 0.2s ease;
+    font-family: 'Oswald';
 }
 .btn-sec:hover {
     background-color: #fff;
@@ -93,7 +96,9 @@ nav .icons-user i {
 .padding {
     padding-bottom: 150px;
 }
-
+.oswald {
+    font-family: 'Oswald';
+}
 /*
 
 
@@ -106,6 +111,7 @@ footer {
     background-color: #fff;
     position: relative;
     top: 300px;
+    margin-top: auto;
 }
 .footerbackgrnd {
     background-color: #181818;
