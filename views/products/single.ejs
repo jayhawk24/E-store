@@ -1,4 +1,5 @@
 <%- include("../partials/header") %> <%- include("../partials/navbar") %>
+<link rel="stylesheet" href="/css/star.css" />
 
 <div class="container"><%- include('../partials/flash') %></div>
 
@@ -61,15 +62,62 @@
                     novalidate
                 >
                     <div class="mb-3 col-6">
-                        <label for="rating" class="form-label">Rating</label>
-                        <input
-                            type="range"
-                            class="form-range"
-                            min="1"
-                            max="5"
-                            name="rating"
-                            id="rating"
-                        />
+                        <fieldset class="starability-basic">
+                            <input
+                                type="radio"
+                                id="no-rate"
+                                class="input-no-rate"
+                                name="rating"
+                                value="1"
+                                checked
+                                aria-label="No rating."
+                            />
+                            <input
+                                type="radio"
+                                id="first-rate1"
+                                name="rating"
+                                value="1"
+                            />
+                            <label for="first-rate1" title="Terrible"
+                                >1 star</label
+                            >
+                            <input
+                                type="radio"
+                                id="first-rate2"
+                                name="rating"
+                                value="2"
+                            />
+                            <label for="first-rate2" title="Not good"
+                                >2 stars</label
+                            >
+                            <input
+                                type="radio"
+                                id="first-rate3"
+                                name="rating"
+                                value="3"
+                            />
+                            <label for="first-rate3" title="Average"
+                                >3 stars</label
+                            >
+                            <input
+                                type="radio"
+                                id="first-rate4"
+                                name="rating"
+                                value="4"
+                            />
+                            <label for="first-rate4" title="Very good"
+                                >4 stars</label
+                            >
+                            <input
+                                type="radio"
+                                id="first-rate5"
+                                name="rating"
+                                value="5"
+                            />
+                            <label for="first-rate5" title="Amazing"
+                                >5 stars</label
+                            >
+                        </fieldset>
                     </div>
                     <div class="mb-3 col-12">
                         <label for="review" class="form-label">Comment </label>
@@ -97,13 +145,11 @@
                     <blockquote class="blockquote ml-3 mb-3">
                         <div class="row mr-2">
                             <p class="col-6"><%= c.review %></p>
-                            <p class="col-6 text-right rating">
-                                <% for(let i=0; i < 5;i++){ if(c.rating){
-                                c.rating--; %>
-                                <i class="fa fa-star"></i>
-                                <% }else{ %>
-                                <i class="fa fa-star-o"></i>
-                                <% }} %>
+                            <p
+                                class="starability-result text-right rating"
+                                data-rating="<%= c.rating %>"
+                            >
+                                Rated: 3 stars
                             </p>
                         </div>
                         <div class="blockquote-footer">
