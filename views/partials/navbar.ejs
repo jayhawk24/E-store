@@ -8,10 +8,25 @@
         <li>Women</li>
         <li>Kids</li>
     </ul>
+
     <div class="icons-user">
+        <% if(!currentUser){ %>
+        <a href="/login" class="btn-sec">Login</a>
+        <a href="/register" class="btn-sec blue">Sign Up</a>
+
+        <% } else{ %>
+
         <i class="fa fa-search" aria-hidden="true"></i>
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-        <i class="fa fa-user-o" aria-hidden="true"></i>
+
+        <a href="#" class="nav">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <sup><span class="badge bg-danger">2</span></sup>
+        </a>
+        <a href="#">
+            <i class="fa fa-user-o" aria-hidden="true"></i>
+        </a>
+        <a href="/logout" class="nav-link text-white">Logout</a>
+        <% } %>
     </div>
 </nav>
 <div class="padding"></div>
