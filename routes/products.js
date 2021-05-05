@@ -4,6 +4,7 @@ const Review = require('../models/review');
 const methodOverride = require('method-override');
 const router = express.Router();
 const isLoggedIn = require('../middlewares/isLoggedIn');
+const isAdmin = require('../middlewares/isAdmin');
 
 router.use(methodOverride('_method'));
 
@@ -27,7 +28,10 @@ router.get('/product/:id', async (req, res) => {
         res.status(500).render('error');
     }
 });
-router.get('/products/new', isLoggedIn, (req, res) => {
+
+// Create new product
+
+router.get('/products/new', isLoggedIn, isAdmin, (req, res) => {
     try {
         res.render('products/new');
     } catch (error) {
@@ -36,9 +40,7 @@ router.get('/products/new', isLoggedIn, (req, res) => {
     }
 });
 
-// Create new product
-
-router.post('/products/new', isLoggedIn, async (req, res) => {
+router.post('/products/new', isLoggedIn, isAdmin, async (req, res) => {
     try {
         const newProd = req.body.product;
         await Product.create(newProd);
@@ -48,6 +50,48 @@ router.post('/products/new', isLoggedIn, async (req, res) => {
         console.log(error);
         req.flash('error', 'Cannot Create Products,Something is Wrong');
 
+        res.status(500).render('error');
+    }
+});
+
+// Edit existing product
+router.get('/product/:id/edit', isLoggedIn, isAdmin, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const product = await Product.findById(id);
+        res.render('products/edit', { product });
+    } catch (error) {
+        console.log(error);
+        req.flash('error', 'Cannot update this Product');
+        res.status(500).render('error');
+    }
+});
+router.patch('/product/:id', isLoggedIn, isAdmin, async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Product.findByIdAndUpdate(id, req.body.product);
+
+        req.flash('success', 'Successfully updated product');
+
+        res.redirect(`/product/${id}`);
+    } catch (error) {
+        console.log(error);
+        req.flash('error', 'Cannot update this Product');
+        res.status(500).render('error');
+    }
+});
+
+// Delete Product
+router.delete('/product/:id', isLoggedIn, isAdmin, async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Product.findByIdAndDelete(id);
+        req.flash('success', 'Successfully deleted product');
+
+        res.redirect('/products');
+    } catch (error) {
+        console.log(error);
+        req.flash('error', 'Cannot delete this Product');
         res.status(500).render('error');
     }
 });
@@ -72,48 +116,6 @@ router.post('/product/:id/review', isLoggedIn, async (req, res) => {
     } catch (error) {
         console.log(error);
         req.flash('error', 'Cannot add review to this Product');
-        res.status(500).render('error');
-    }
-});
-
-// Edit existing product
-router.get('/product/:id/edit', isLoggedIn, async (req, res) => {
-    try {
-        const { id } = req.params;
-        const product = await Product.findById(id);
-        res.render('products/edit', { product });
-    } catch (error) {
-        console.log(error);
-        req.flash('error', 'Cannot update this Product');
-        res.status(500).render('error');
-    }
-});
-router.patch('/product/:id', isLoggedIn, async (req, res) => {
-    try {
-        const { id } = req.params;
-        await Product.findByIdAndUpdate(id, req.body.product);
-
-        req.flash('success', 'Successfully updated product');
-
-        res.redirect(`/product/${id}`);
-    } catch (error) {
-        console.log(error);
-        req.flash('error', 'Cannot update this Product');
-        res.status(500).render('error');
-    }
-});
-
-// Delete Product
-router.delete('/product/:id', isLoggedIn, async (req, res) => {
-    try {
-        const { id } = req.params;
-        await Product.findByIdAndDelete(id);
-        req.flash('success', 'Successfully deleted product');
-
-        res.redirect('/products');
-    } catch (error) {
-        console.log(error);
-        req.flash('error', 'Cannot delete this Product');
         res.status(500).render('error');
     }
 });
