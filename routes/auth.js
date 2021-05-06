@@ -3,6 +3,21 @@ const passport = require('passport');
 const router = express.Router();
 const User = require('../models/user');
 
+router.get(
+    '/auth/google',
+    passport.authenticate('google', {
+        scope: ['profile', 'email']
+    })
+);
+
+router.get(
+    '/auth/google/redirect',
+    passport.authenticate('google'),
+    (req, res) => {
+        res.redirect('/');
+    }
+);
+
 router.get('/register', (req, res) => {
     res.render('auth/signup');
 });
@@ -10,7 +25,7 @@ router.post('/register', async (req, res) => {
     try {
         const user = new User({
             username: req.body.username,
-            email: req.body.email
+            title: req.body.title
         });
         await User.register(user, req.body.password);
         req.flash(

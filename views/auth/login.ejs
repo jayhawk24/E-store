@@ -7,9 +7,9 @@
     <h1 class="mb-3">Login</h1>
     <form class="needs-validation" action="/login" method="POST" novalidate>
         <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
+            <label for="username" class="form-label">Email</label>
             <input
-                type="text"
+                type="email"
                 class="form-control"
                 id="username"
                 placeholder="Username"
@@ -32,9 +32,14 @@
             <div class="valid-feedback">Looks good!</div>
         </div>
 
-        <button type="submit" class="btn btn-main">Login</button>
+        <button type="submit" class="btn btn-main m-3">Login</button>
         <a class="btn btn-main blue" href="/register">Sign Up</a>
     </form>
+    <div class="row">
+        <a href="/auth/google" class="btn btn-main blue ml-5">
+            <i class="fa fa-google text-lg text-white mr-5"></i> Sign In Google
+        </a>
+    </div>
 </div>
 
 <%- include("../partials/footer")%>

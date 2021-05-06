@@ -32,11 +32,11 @@
             <ul class="list-group mb-3">
                 <% for(let item of cart){ %>
                 <li class="list-group-item" aria-current="true">
-                    <%= item.title %> - $<%= item.price %>
+                    <%= item.title %> - &#8377;<%= item.price %>
                 </li>
                 <% total += item.price;} %>
                 <li class="list-group-item active">
-                    Total Amount : $<%= total %>
+                    Total Amount : &#8377;<%= total %>
                 </li>
             </ul>
             <a href="/payment" class="btn btn-success mb-3"> Proceed to pay</a>

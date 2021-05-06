@@ -20,6 +20,8 @@
     <div class="product-display">
         <img src="<%= product.image%> " alt="" />
 
+        <% if( currentUser && currentUser.username === 'admin@gmail.com'){ %>
+
         <div class="admin">
             <a href="/product/<%= product.id %>/edit?_method=PATCH">
                 <button class="btn-main">Edit</button></a
@@ -31,12 +33,13 @@
                 <input type="submit" class="btn-main" value="Delete" />
             </form>
         </div>
+        <% } %>
     </div>
 
     <div class="product-wrap">
         <div class="product-details">
             <h4><%= product.title %></h4>
-            <p class="price">$<%= product.price %></p>
+            <p class="price">&#8377;<%= product.price %></p>
             <p class="description"><%= product.description %></p>
             <label for="quantity">Quantity: </label>
             <div class="qty">

@@ -11,9 +11,9 @@
         novalidate
     >
         <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
+            <label for="username" class="form-label">E-mail</label>
             <input
-                type="text"
+                type="email"
                 class="form-control"
                 id="username"
                 placeholder="Username"
@@ -23,13 +23,13 @@
             <div class="valid-feedback">Looks good!</div>
         </div>
         <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
+            <label for="title" class="form-label">Name</label>
             <input
-                type="email"
+                type="title"
                 class="form-control"
-                id="email"
-                placeholder="Email"
-                name="email"
+                id="title"
+                placeholder="Name"
+                name="title"
                 required
             />
             <div class="valid-feedback">Looks good!</div>
@@ -59,7 +59,11 @@
             <div class="valid-feedback">Looks good!</div>
         </div>
 
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn-main">Submit</button>
+
+        <a href="/auth/google" class="btn btn-main blue ml-5">
+            <i class="fa fa-google text-lg text-white mr-5"></i> Sign In Google
+        </a>
     </form>
 </div>
 

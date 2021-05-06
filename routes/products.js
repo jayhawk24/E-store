@@ -85,9 +85,18 @@ router.patch('/product/:id', isLoggedIn, isAdmin, async (req, res) => {
 router.delete('/product/:id', isLoggedIn, isAdmin, async (req, res) => {
     try {
         const { id } = req.params;
-        await Product.findByIdAndDelete(id);
-        req.flash('success', 'Successfully deleted product');
+        const product = await Product.findById(id);
 
+        // Delete associated Reviews first then delete product
+
+        await Review.deleteMany({
+            _id: {
+                $in: product.reviews
+            }
+        });
+        await product.deleteOne({ _id: id });
+
+        req.flash('success', 'Successfully deleted product');
         res.redirect('/products');
     } catch (error) {
         console.log(error);
@@ -101,7 +110,7 @@ router.post('/product/:id/review', isLoggedIn, async (req, res) => {
     try {
         const { id } = req.params;
         const review = new Review({
-            user: req.user.username,
+            user: req.user.title,
             ...req.body
         });
         const product = await Product.findById(id);

@@ -3,9 +3,12 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const Product = require('./product');
 
 const userSchema = new mongoose.Schema({
-    email: {
+    title: {
         type: String,
         required: true
+    },
+    googleId: {
+        type: String
     },
     cart: [
         {
