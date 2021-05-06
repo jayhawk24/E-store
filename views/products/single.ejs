@@ -47,8 +47,9 @@
                     min="1"
                     max="10"
                 />
-
-                <button class="btn-main">Add To Cart</button>
+                <form action="/user/<%= product._id%>/cart" method="post">
+                    <button type="submit" class="btn-main">Add To Cart</button>
+                </form>
                 <i class="fa fa-heart" aria-hidden="true"></i>
             </div>
         </div>

@@ -1,0 +1,48 @@
+<%- include("../partials/header") %> <%- include("../partials/navbar") %>
+
+<div class="container">
+    <h1>Cart</h1>
+    <div class="row">
+        <% if(cart && cart.length > 0){ %> <% for(let item of cart){ %>
+        <div class="card mb-3 col-8" style="max-width: 540px">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<%= item.image %> " alt="..." height="150px" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= item.title %></h5>
+                        <p class="card-text"><%= item.description %></p>
+                        <form
+                            action="/user/<%= currentUser._id %>/cart/<%= item._id %>?_method=DELETE"
+                            method="POST"
+                        >
+                            <button class="btn btn-small btn-danger">
+                                Remove
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        <div class="col-4">
+            <h4>Total Amount</h4>
+            <% total = 0 %>
+            <ul class="list-group mb-3">
+                <% for(let item of cart){ %>
+                <li class="list-group-item" aria-current="true">
+                    <%= item.title %> - $<%= item.price %>
+                </li>
+                <% total += item.price;} %>
+                <li class="list-group-item active">
+                    Total Amount : $<%= total %>
+                </li>
+            </ul>
+            <a href="/payment" class="btn btn-success mb-3"> Proceed to pay</a>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>

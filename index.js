@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const app = express();
 const session = require('express-session');
@@ -9,7 +10,9 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const productRoutes = require('./routes/products');
 const authRoutes = require('./routes/auth');
+const cartRoutes = require('./routes/cart');
 
+dotenv.config();
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
@@ -28,7 +31,7 @@ mongoose.set('useFindAndModify', false);
 
 // session and flash messages config
 const sessionConfig = {
-    secret: 'weneedsomebettersecret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 };
@@ -57,6 +60,7 @@ app.use((req, res, next) => {
 
 app.use(productRoutes);
 app.use(authRoutes);
+app.use(cartRoutes);
 
 app.get('/', (req, res) => {
     res.redirect('/products');

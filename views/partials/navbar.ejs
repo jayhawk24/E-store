@@ -19,8 +19,14 @@
         <i class="fa fa-search" aria-hidden="true"></i>
 
         <a href="#" class="nav">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            <sup><span class="badge bg-danger">2</span></sup>
+            <a href="/user/<%= currentUser._id %>/cart">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </a>
+            <sup
+                ><span class="badge bg-danger">
+                    <%= currentUser.cart.length %>
+                </span></sup
+            >
         </a>
         <a href="#">
             <i class="fa fa-user-o" aria-hidden="true"></i>
