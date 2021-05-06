@@ -108,31 +108,19 @@ a:hover {
     max-height: 300px;
 }
 .name {
-    font-size: 1.5em;
+    font-size: 1.3em;
     padding: 5px;
     font-family: 'Roboto';
+    font-weight: 100;
     text-align: center;
 }
 .price {
     padding: 5px;
     margin-bottom: 10px;
-    font-weight: bold;
+    font-weight: bolder;
     font-family: 'Roboto';
     text-align: center;
     color: #000;
-}
-.product-card button {
-    width: 100%;
-    background-color: #ff4e00;
-    background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
-
-    border: 0;
-    padding: 10px;
-    font-weight: bold;
-    font-family: 'Roboto';
-    color: #fff;
-    opacity: 0;
-    transition: all 0.1s ease;
 }
 .product-card:hover {
     transform: scale(1.01);
@@ -212,6 +200,8 @@ a:hover {
     font-family: 1.5em;
     padding: 10px;
     margin: 5px;
+    margin-left: 25px;
+    margin-bottom: 20px;
 }
 .product-details .btn-main {
     margin: 0 20px;
