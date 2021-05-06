@@ -10,7 +10,6 @@
   - [Features](#features)
   - [Database](#database)
     - [User Schema:](#user-schema)
-    - [Category Schema:](#category-schema)
     - [Product Schema:](#product-schema)
     - [Order Schema:](#order-schema)
   - [Colors](#colors)
@@ -39,7 +38,7 @@ The application is built with:
 -   Express version 4.17.1
 -   EJS version 3.1.6
 -   Bootstrap version 4.4.1
--   FontAwesome version 4.13.0
+-   FontAwesome version 4.7.0
 -   AdminBro: used and customized to implement the admin panel
 -   Passport: used for authentication
 
@@ -51,7 +50,7 @@ Users can do the following:
 
 -   Create an account, login or logout
 -   Browse available products added by the admin
--   Add reviews to products
+-   Add Star reviews to products
 -   Check other users review on every product.
 -   Add products to the shopping cart
 -   Delete products from the shopping cart
@@ -76,11 +75,6 @@ All the models can be found in the models directory created using mongoose.
 -   password (String)
 -   googleId (String)
 -   Cart [ObjectId - a reference to the products schema]
-
-### Category Schema:
-
--   title (String)
--   slug (String)
 
 ### Product Schema:
 

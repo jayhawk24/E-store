@@ -1,7 +1,7 @@
 <%- include("../partials/header") %> <%- include("../partials/navbar") %>
 
 <div class="container">
-    <h1 style="padding-top: 100px">New Product</h1>
+    <h1>New Product</h1>
 
     <form
         method="post"
@@ -27,7 +27,7 @@
             <input
                 type="number"
                 name="product[price]"
-                placeholder="Title"
+                placeholder="&#8377;"
                 class="form-control"
                 id="number"
                 required
@@ -57,11 +57,9 @@
                 required
             ></textarea>
         </div>
-        <input
-            class="col-3 btn btn-primary mb-5 ml-3"
-            type="submit"
-            value="Submit"
-        />
+        <button class="col-3 btn btn-main mb-5 ml-3" type="submit">
+            Submit
+        </button>
     </form>
 </div>
 <%- include("../partials/footer") %>

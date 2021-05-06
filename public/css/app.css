@@ -5,45 +5,6 @@ a:hover {
     color: #000;
 }
 
-.btn-main {
-    padding: 15px 40px;
-    border-radius: 40px;
-    color: #000;
-    font-family: 'oswald';
-    font-weight: lighter;
-    font-size: 1.1em;
-    background-color: #ec9f05;
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-    box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
-}
-
-.btn-main:after {
-    font-family: 'FontAwesome';
-    content: '\f105';
-    display: inline-block;
-    vertical-align: middle;
-    font-weight: 900;
-    position: absolute;
-    opacity: 0;
-    top: 12px;
-    right: -20px;
-    transition: 0.5s;
-}
-
-.btn-main:hover {
-    padding-right: 50px;
-    padding-left: 30px;
-    font-weight: normal;
-}
-
-.btn-main:hover:after {
-    opacity: 1;
-    right: 20px;
-}
-
 .products {
     padding-bottom: 50px;
 }

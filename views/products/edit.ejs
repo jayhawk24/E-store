@@ -1,8 +1,8 @@
 <%- include("../partials/header") %> <%- include("../partials/navbar") %>
-
+<link rel="stylesheet" href="/css/app.css">
 
 <div class="container">
-    <h1 style="padding-top: 150px">Edit Product</h1>
+    <h1>Edit Product</h1>
 
     <form
         action="/product/<%= product.id %>?_method=patch" 
@@ -61,11 +61,10 @@
                 required
             ><%= product.description %></textarea>
         </div>
-        <input
-            class="col-3 btn btn-primary mb-5 ml-3"
+        <button
+            class="col-3 btn btn-main mb-5 ml-3"
             type="submit"
-            value="Submit"
-        />
+        >Submit</button>
     </form>
 </div>
 <%- include("../partials/footer") %>
