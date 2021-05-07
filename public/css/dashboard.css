@@ -22,3 +22,8 @@ h1 {
     font-family: 'oswald';
     margin-bottom: 50px;
 }
+.amount {
+    color: #ec9f05;
+    font-weight: bolder;
+    font-size: 1.2em;
+}

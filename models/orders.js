@@ -7,6 +7,10 @@ const orderSchema = new mongoose.Schema({
             ref: 'Products'
         }
     ],
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
     txnId: {
         type: String,
         required: true
@@ -19,6 +23,10 @@ const orderSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    amount: {
+        type: Number,
+        required: true
     }
 });
 

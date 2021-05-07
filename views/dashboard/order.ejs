@@ -20,6 +20,49 @@
         <div class="container">
             <%- include('../partials/flash') %>
             <h1>My Orders</h1>
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Order</th>
+                        <th>Products</th>
+                        <th>Date</th>
+                        <th>Delivery</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% iter = 1 %> <% if(orders && orders.length > 0){ %> <%
+                    for(let order of orders){ %>
+                    <tr>
+                        <th><div><%= iter++ %></div></th>
+                        <td>
+                            <div class="cart-card">
+                                <h5>
+                                    <%=
+                                    order.txnId.substring(order.txnId.length-6)
+                                    %>
+                                </h5>
+                                <p class="amount">
+                                    &#8377; <%= order.amount %>
+                                </p>
+                            </div>
+                        </td>
+                        <td>
+                            <ul class="list-group">
+                                <% for(let item of order.products){ %>
+                                <li class="list-group-item">
+                                    <%= item.title %>
+                                </li>
+                                <% } %>
+                            </ul>
+                        </td>
+
+                        <td><%= order.createdAt %></td>
+                        <td><%= order.delevered %></td>
+                    </tr>
+                    <% } } %>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

@@ -31,14 +31,10 @@ router.patch('/user/:id', isLoggedIn, isValid, async (req, res) => {
 });
 router.get('/orders/:id', isLoggedIn, isValid, async (req, res) => {
     try {
-        const prod = await User.findById(req.params.id)
-            .populate('orders')
-            .populate('products');
-
-        // Fix this
-
-        console.log(prod);
-        res.render('dashboard/order', { prod });
+        const orders = await Order.find({ user: req.params.id }).populate(
+            'products'
+        );
+        res.render('dashboard/order', { orders });
     } catch (err) {
         console.log(err);
         req.flash('error', 'Unable to fetch your orders');
@@ -51,10 +47,11 @@ router.post('/orders/:id', isLoggedIn, isValid, async (req, res) => {
         const user = await User.findById(id);
         const order = new Order({
             products: user.cart,
+            user: id,
             txnId: '0000TESTID0000',
-            createdAt: Date.now()
+            createdAt: Date.now(),
+            amount: req.session.amount
         });
-        user.orders.push(order);
         user.cart = [];
 
         await order.save();
