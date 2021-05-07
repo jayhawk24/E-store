@@ -1,0 +1,72 @@
+<%- include("../partials/header") %> <%- include("../partials/navbar") %>
+<link rel="stylesheet" href="/css/dashboard.css" />
+<div class="wrap">
+    <div class="sidebar">
+        <ul class="list-group">
+            <li class="list-group-item active">My Profile</li>
+
+            <li class="list-group-item list-group-item-action text-dark">
+                <a href="/orders/<%= currentUser._id %>"> Orders </a>
+            </li>
+            <li class="list-group-item list-group-item-action text-dark">
+                <a href="/wishlist/<%= currentUser._id %>"> Wishlist </a>
+            </li>
+            <li class="list-group-item list-group-item-action text-dark">
+                <a href="/payment/<%= currentUser._id %>"> Payment Methods </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="container">
+            <%- include('../partials/flash') %>
+            <h1>My Profile</h1>
+            <form
+                action="/user/<%= currentUser._id %>?_method=patch"
+                method="post"
+                class="row g-3 needs-validation"
+                novalidate
+            >
+                <div class="mb-3 col-6">
+                    <label for="title" class="form-label">Full Name</label>
+                    <input
+                        type="text"
+                        name="user[title]"
+                        placeholder="Full Name"
+                        class="form-control"
+                        id="title"
+                        value="<%= user.title %>"
+                        required
+                    />
+                </div>
+                <br /><br />
+                <div class="mb-3 col-12">
+                    <label for="image" class="form-label">User Image</label>
+                    <input
+                        type="text"
+                        name="user[image]"
+                        placeholder="Image"
+                        class="form-control"
+                        id="image"
+                        value="<%= user.image %>"
+                    />
+                </div>
+                <br /><br />
+
+                <div class="mb-3 col-12">
+                    <label for="address" class="form-label">Address</label>
+                    <input
+                        type="text"
+                        name="user[address]"
+                        placeholder="Address"
+                        class="form-control"
+                        id="address"
+                        value="<%= user.address %>"
+                    />
+                </div>
+                <br /><br />
+                <button class="btn btn-main m-3" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include("../partials/footer") %>

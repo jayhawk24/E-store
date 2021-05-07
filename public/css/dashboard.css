@@ -1,0 +1,24 @@
+.padding {
+    padding-bottom: 0px;
+}
+.wrap {
+    display: flex;
+}
+.sidebar {
+    background-color: #181818;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    height: 100vh;
+}
+.sidebar ul {
+    margin: 0px 10px;
+}
+.main {
+    padding-top: 150px;
+}
+h1 {
+    font-family: 'oswald';
+    margin-bottom: 50px;
+}

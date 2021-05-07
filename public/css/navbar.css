@@ -138,6 +138,10 @@ nav .icons-user i {
     font-size: 1.2em;
     padding: 10px;
     color: #fff;
+    transition: all 0.3s ease;
+}
+nav .icons-user i:hover {
+    color: #ec9f05;
 }
 
 .padding {

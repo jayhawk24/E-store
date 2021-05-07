@@ -61,9 +61,11 @@
         </div>
         <div>
             <p>Total Cost: &#8377;<%= total %></p>
-            <button class="btn btn-main <% if(!total){ %> disabled <% } %>">
-                Checkout
-            </button>
+            <form action="/orders/<%= currentUser._id %>" method="post">
+                <button class="btn btn-main <% if(!total){ %> disabled <% } %>">
+                    Place Order
+                </button>
+            </form>
         </div>
     </div>
 </div>

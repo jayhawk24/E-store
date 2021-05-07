@@ -1,11 +1,18 @@
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 const Product = require('./product');
+const Order = require('./orders');
 
 const userSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
+    },
+    image: {
+        type: String
+    },
+    Address: {
+        type: String
     },
     googleId: {
         type: String
@@ -14,6 +21,12 @@ const userSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Products'
+        }
+    ],
+    orders: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Order'
         }
     ]
 });

@@ -86,8 +86,7 @@ All the models can be found in the models directory created using mongoose.
 ### Order Schema:
 
 -   user (ObjectId - a reference to the user schema)
--   address (String)
--   paymentId (String)
+-   txnId (String)
 -   createdAt (Date)
 -   Delivered (Boolean)
 
