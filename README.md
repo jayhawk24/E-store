@@ -14,6 +14,9 @@
     - [Order Schema:](#order-schema)
   - [Colors](#colors)
   - [Run](#run)
+  - [Todo](#todo)
+      - [Front End](#front-end)
+      - [Back End](#back-end)
 
 ## Introduction
 
@@ -113,3 +116,20 @@ To run this application, you have to set your own environmental variables. For s
 After you've set these environmental variables in the .env file at the root of the project, you need to uncomment seedDB line to fill your empty MongoDB Atlas database. After that comment it again.
 
 Now you can run "npm start" in the terminal and the application should work.
+
+## Todo
+
+#### Front End
+
+-   [ ] Home page
+-   [ ] filters
+-   [ ] about us page
+
+#### Back End
+
+-   [ ] Search
+-   [ ] Categories
+-   [ ] payment integration
+-   [ ] wishlist
+-   [ ] security checks
+-   [ ] strong validation
