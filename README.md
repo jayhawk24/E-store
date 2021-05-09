@@ -121,9 +121,12 @@ Now you can run "npm start" in the terminal and the application should work.
 
 #### Front End
 
+-   [ ] Mobile styling
 -   [ ] Home page
 -   [ ] filters
 -   [ ] about us page
+-   [ ] favicon
+-   [ ] adjust product card
 
 #### Back End
 
@@ -132,4 +135,10 @@ Now you can run "npm start" in the terminal and the application should work.
 -   [ ] payment integration
 -   [ ] wishlist
 -   [ ] security checks
--   [ ] strong validation
+-   [ ] strong validation login form and reviews
+-   [ ] 404 pages
+-   [ ] images upload
+-   [ ] review images upload
+-   [ ] quantity
+-   [ ] forgot password
+-   [ ] Delete User / reviews
