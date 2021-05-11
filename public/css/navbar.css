@@ -76,7 +76,7 @@ nav li {
 }
 
 .btn-main {
-    padding: 15px 40px;
+    padding: 15px 30px;
     border-radius: 40px;
     color: #000;
     font-family: 'oswald';
@@ -151,14 +151,14 @@ nav .icons-user i:hover {
     font-family: 'Oswald';
 }
 
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 600px) {
     /* MENU Bar */
     #menuicon {
         height: 25px;
         width: 50px;
         position: fixed;
         top: 50px;
-        right: 50px;
+        right: 5%;
     }
     #menuicon:hover {
         cursor: pointer;
@@ -237,7 +237,7 @@ nav .icons-user i:hover {
         border: 1px solid rgb(187, 187, 187);
         padding: 10px;
         border-radius: 50%;
-        margin-top: 40px;
+        margin-top: 20px;
         font-size: 1.3em;
         cursor: pointer;
         transition: all 0.3s ease;
