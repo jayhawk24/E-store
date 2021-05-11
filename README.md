@@ -121,7 +121,7 @@ Now you can run "npm start" in the terminal and the application should work.
 
 #### Front End
 
--   [ ] Mobile styling
+-   [x] Mobile styling
 -   [ ] Home page
 -   [ ] filters
 -   [ ] about us page

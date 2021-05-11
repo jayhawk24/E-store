@@ -1,40 +1,50 @@
-<nav>
-    <div class="logo">
-        <img src="/assets/logo.png" alt="" />
-        <a href="/">Shop</a>
-    </div>
-    <ul>
-        <li>Men</li>
-        <li>Women</li>
-        <li>Kids</li>
-    </ul>
+<div id="menuicon">
+    <div id="menuline"></div>
+</div>
 
-    <div class="icons-user">
-        <% if(!currentUser){ %>
-        <a href="/login" class="btn-sec">Login</a>
-        <a href="/register" class="btn-sec blue">Sign Up</a>
+<div id="mainmenu">
+    <nav>
+        <div class="logo">
+            <img src="/assets/logo.png" alt="" />
+            <a href="/">Shop</a>
+        </div>
+        <ul>
+            <li>Men</li>
+            <li>Women</li>
+            <li>Kids</li>
+        </ul>
 
-        <% } else{ %>
+        <div class="icons-user">
+            <% if(!currentUser){ %>
+            <a href="/login" class="btn-sec">Login</a>
+            <a href="/register" class="btn-sec blue">Sign Up</a>
 
-        <i class="fa fa-search" aria-hidden="true"></i>
+            <% } else{ %>
 
-        <a href="#" class="nav">
-            <a href="/user/<%= currentUser._id %>/cart">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <i class="fa fa-search" aria-hidden="true"></i>
+
+            <a href="#" class="nav">
+                <a href="/user/<%= currentUser._id %>/cart">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </a>
+                <sup>
+                    <span class="badge bg-danger">
+                        <%= currentUser.cart.length %>
+                    </span>
+                </sup>
             </a>
-            <sup>
-                <span class="badge bg-danger">
-                    <%= currentUser.cart.length %>
-                </span>
-            </sup>
-        </a>
-        <a href="/user/<%= currentUser._id %>">
-            <i class="fa fa-user-o" aria-hidden="true"></i>
-        </a>
-        <a href="/logout" class="nav-link text-white oswald">Logout</a>
-        <% if(currentUser.username === 'admin@gmail.com'){ %>
-        <a href="/products/new" class="btn-sec blue">New</a>
-        <% } %> <% } %>
-    </div>
-</nav>
+            <a href="/user/<%= currentUser._id %>">
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+            </a>
+            <a href="/logout" class="nav-link text-white oswald">Logout</a>
+            <% if(currentUser.username === 'admin@gmail.com'){ %>
+            <a href="/products/new" class="btn-sec blue">New</a>
+            <% } %> <% } %>
+        </div>
+
+        <div id="close">
+            <i class="fa fa-close"></i>
+        </div>
+    </nav>
+</div>
 <div class="padding"></div>

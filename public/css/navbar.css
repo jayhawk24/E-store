@@ -150,6 +150,113 @@ nav .icons-user i:hover {
 .oswald {
     font-family: 'Oswald';
 }
+
+@media only screen and (max-width: 540px) {
+    /* MENU Bar */
+    #menuicon {
+        height: 25px;
+        width: 50px;
+        position: fixed;
+        top: 50px;
+        right: 50px;
+    }
+    #menuicon:hover {
+        cursor: pointer;
+    }
+    #menuline {
+        height: 6px;
+        width: 50px;
+        background-color: royalblue;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s;
+        z-index: 99;
+    }
+    #menuicon:hover #menuline {
+        width: 40px;
+    }
+    #menuline:before {
+        content: '';
+        height: 6px;
+        width: 40px;
+        background-color: royalblue;
+        position: absolute;
+        margin-top: 10px;
+        transition: all 0.3s;
+    }
+
+    #menuicon:hover #menuline::before {
+        width: 50px;
+    }
+    #menuline:after {
+        content: '';
+        height: 6px;
+        width: 40px;
+        background-color: royalblue;
+        position: absolute;
+        margin-top: -10px;
+        transition: all 0.3s;
+    }
+
+    #menuicon:hover #menuline::after {
+        width: 50px;
+    }
+    #mainmenu {
+        height: 100vh;
+        width: 300px;
+        background-color: rgba(0, 0, 0, 0.9);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        -webkit-clip-path: polygon(0 0, 100% 0, 0% 100%, 0% 100%);
+        position: fixed;
+        top: 0px;
+        left: -300px;
+        z-index: 999999;
+        transition: all 0.5s ease-in-out;
+    }
+    nav {
+        width: 60vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: transparent;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    nav ul {
+        flex-direction: column;
+    }
+    #close {
+        display: flex;
+        justify-content: center;
+    }
+    #close i {
+        color: rgb(187, 187, 187);
+        border: 1px solid rgb(187, 187, 187);
+        padding: 10px;
+        border-radius: 50%;
+        margin-top: 40px;
+        font-size: 1.3em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    #close i:hover {
+        color: #ec9f05;
+        border-color: #ec9f05;
+    }
+    nav .icons-user {
+        flex-wrap: wrap;
+        width: 80%;
+        margin: 0 auto;
+    }
+    /*Menu bar ends */
+    .padding {
+        padding-bottom: 0px;
+    }
+}
+
 /*
 
 
