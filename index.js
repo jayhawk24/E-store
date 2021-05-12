@@ -114,6 +114,9 @@ app.use(dashRoutes);
 app.get('/', (req, res) => {
     res.redirect('/products');
 });
+app.all('*', (req, res) => {
+    res.render('404');
+});
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server running on port 3000.');
 });

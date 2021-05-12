@@ -10,7 +10,11 @@ const productSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'reviews'
         }
-    ]
+    ],
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'categories'
+    }
 });
 
 const Product = mongoose.model('Products', productSchema);

@@ -61,6 +61,26 @@
                 required
             ><%= product.description %></textarea>
         </div>
+
+        <div class="mb-3 col-12">
+            <label for="desc" class="form-label">Category : </label>
+            <select class="form-select col-3" name="product[category]">
+                <% if(product.category ){ %>
+                
+                    <option value="<%= product.category.id %>" selected > <%= product.category.title %>  </option>
+                    
+                <% }else{ %> 
+                
+                    <option value="" selected disabled>Select category</option>
+                
+                <% } %> 
+                <% for(let c of categories){%>
+                <option value="<%= c._id %>"><%= c.title %></option>
+                <% } %>
+            </select>
+        </div>
+        
+
         <button
             class="col-3 btn btn-main mb-5 ml-3"
             type="submit"

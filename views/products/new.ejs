@@ -1,6 +1,8 @@
 <%- include("../partials/header") %> <%- include("../partials/navbar") %>
 <link rel="stylesheet" href="/css/app.css" />
 
+<div class="container"><%- include('../partials/flash') %></div>
+
 <div class="mcontainer">
     <h1 class="edit">New Product</h1>
 
@@ -36,7 +38,7 @@
         </div>
         <br /><br />
         <div class="mb-3 col-12">
-            <label for="image" class="form-label">Blog Image URL</label>
+            <label for="image" class="form-label">Image URL</label>
             <input
                 type="text"
                 name="product[image]"
@@ -58,7 +60,39 @@
                 required
             ></textarea>
         </div>
+        <div class="mb-3 col-12">
+            <label for="desc" class="form-label">Category : </label>
+            <select class="form-select col-3" name="product[category]">
+                <option value="" selected disabled>Select category</option>
+                <% for(let c of categories){%>
+                <option value="<%= c._id %>"><%= c.title %></option>
+                <% } %>
+            </select>
+        </div>
         <button class="col-3 btn btn-main mb-5 ml-3" type="submit">
+            Submit
+        </button>
+    </form>
+    <h3 class="edit">Add New Category</h3>
+
+    <form
+        method="post"
+        action="/category/new"
+        class="row g-3 needs-validation"
+        novalidate
+    >
+        <div class="mb-3 col-12">
+            <label for="ctitle" class="form-label">Title</label>
+            <input
+                type="text"
+                name="category[title]"
+                placeholder="Category Name"
+                class="form-control"
+                id="ctitle"
+                required
+            />
+        </div>
+        <button class="btn btn-main blue mb-5 ml-3" type="submit">
             Submit
         </button>
     </form>
