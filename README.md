@@ -30,7 +30,7 @@ The application is deployed to Heroku and can be accessed through the following 
 
 [E-Store on Heroku](https://estore24.herokuapp.com/)
 
-The website resembles a real store and you can add products to your cart and pay for them. If you want to try the checkout process, you can use the dummy card number provided by stripe for testing which is 4242 4242 4242 4242 with any expiration date, CVC, and zip codes. Please <u><b>DO NOT</b></u> provide real card number and data.
+The website resembles a real store and you can add products to your cart and pay for them. If you want to try the application with all features login with admin@gmail.com : EBqAfxKJDAB2yPk
 
 ## Technology
 
