@@ -7,7 +7,9 @@
 <section class="head">
     <div class="category">
         <i class="fa fa-home" aria-hidden="true"></i>
-        Food / Fruit / <span> Strawberries </span>
+        <% if (product.category ){ %>
+        <span>/ <%= product.category.title %> /</span>
+        <% } %>
     </div>
     <div class="delivery">
         <i class="fa fa-truck" aria-hidden="true"></i>

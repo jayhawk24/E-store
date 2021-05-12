@@ -131,12 +131,12 @@ Now you can run "npm start" in the terminal and the application should work.
 #### Back End
 
 -   [ ] Search
--   [ ] Categories
+-   [x] Categories
 -   [ ] payment integration
 -   [ ] wishlist
 -   [ ] security checks
 -   [ ] strong validation login form and reviews
--   [ ] 404 pages
+-   [x] 404 pages
 -   [ ] images upload
 -   [ ] review images upload
 -   [ ] quantity
