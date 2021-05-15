@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const router = express.Router();
 const isLoggedIn = require('../middlewares/isLoggedIn');
 const isAdmin = require('../middlewares/isAdmin');
+const upload = require('../middlewares/multer');
 
 router.use(methodOverride('_method'));
 
@@ -45,20 +46,32 @@ router.get('/products/new', isLoggedIn, isAdmin, async (req, res) => {
     }
 });
 
-router.post('/products/new', isLoggedIn, isAdmin, async (req, res) => {
-    try {
-        const newProd = req.body.product;
-        console.log(req.body);
-        await Product.create(newProd);
-        req.flash('success', 'Successfully created new product');
-        res.redirect('/products');
-    } catch (error) {
-        console.log(error);
-        req.flash('error', 'Cannot Create Products,Something is Wrong');
+router.post(
+    '/products/new',
+    isLoggedIn,
+    isAdmin,
+    upload.array('product[images]', 10),
+    async (req, res) => {
+        try {
+            let img = [];
+            if (req.files !== undefined) {
+                for (let i of req.files) {
+                    img.push(i.path.substring(6));
+                }
+            }
+            const newProd = req.body.product;
+            newProd.images = img;
+            await Product.create(newProd);
+            req.flash('success', 'Successfully created new product');
+            res.redirect('/products');
+        } catch (error) {
+            console.log(error);
+            req.flash('error', 'Cannot Create Products,Something is Wrong');
 
-        res.status(500).render('error');
+            res.status(500).render('error');
+        }
     }
-});
+);
 
 // Create new category
 router.post('/category/new', isLoggedIn, isAdmin, async (req, res) => {
@@ -79,7 +92,6 @@ router.get('/product/:id/edit', isLoggedIn, isAdmin, async (req, res) => {
     try {
         const { id } = req.params;
         const product = await Product.findById(id).populate('category');
-        console.log(product);
         const categories = await Category.find({});
         res.render('products/edit', { product, categories });
     } catch (error) {
@@ -88,19 +100,33 @@ router.get('/product/:id/edit', isLoggedIn, isAdmin, async (req, res) => {
         res.status(500).render('error');
     }
 });
-router.patch('/product/:id', isLoggedIn, isAdmin, async (req, res) => {
-    try {
-        const { id } = req.params;
-        console.log(req.body);
-        await Product.findByIdAndUpdate(id, req.body.product);
-        req.flash('success', 'Successfully updated product');
-        res.redirect(`/product/${id}`);
-    } catch (error) {
-        console.log(error);
-        req.flash('error', 'Cannot update this Product');
-        res.status(500).render('error');
+router.patch(
+    '/product/:id',
+    isLoggedIn,
+    isAdmin,
+    upload.array('product[images]', 10),
+    async (req, res) => {
+        try {
+            let img = [];
+            if (req.files !== undefined) {
+                for (let i of req.files) {
+                    img.push(i.path.substring(6));
+                }
+            }
+            const { id } = req.params;
+            const product = req.body.product;
+            product.image = img;
+            console.log(product, req.files);
+            await Product.findByIdAndUpdate(id, product);
+            req.flash('success', 'Successfully updated product');
+            res.redirect(`/product/${id}`);
+        } catch (error) {
+            console.log(error);
+            req.flash('error', 'Cannot update this Product');
+            res.status(500).render('error');
+        }
     }
-});
+);
 
 // Delete Product
 router.delete('/product/:id', isLoggedIn, isAdmin, async (req, res) => {

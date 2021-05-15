@@ -21,10 +21,9 @@
 
 <div class="mcontainer">
     <div class="product-display">
-        <img src="<%= product.image%> " alt="" />
-
-        <% if( currentUser && currentUser.username === 'admin@gmail.com'){ %>
-
+        <% for(let url of product.images){ %>
+        <img src="<%= url %> " alt="" />
+        <% }if( currentUser && currentUser.username==='admin@gmail.com'){ %>
         <div class="admin">
             <a href="/product/<%= product.id %>/edit?_method=PATCH">
                 <button class="btn-main">Edit</button></a

@@ -8,6 +8,7 @@
         action="/product/<%= product.id %>?_method=patch" 
         method="post"
         class="row g-3 needs-validation"
+        enctype="multipart/form-data"
         novalidate
     >
         <div class="mb-3 col-6">
@@ -38,17 +39,25 @@
         </div>
         <br /><br />
         <div class="mb-3 col-12">
-            <label for="image" class="form-label">Blog Image URL</label>
+            <label for="image" class="form-label">Image</label>
             <input
-                type="text"
-                name="product[image]"
+                type="file"
+                name="product[images]"
                 placeholder="Image"
                 class="form-control"
                 id="image"
-                value="<%= product.image %>"
+                multiple
             />
         </div>
         <br /><br />
+        <div class="mb-3 col-12">
+            <p class="form-p">Preview</p>
+            <div class="images">
+                <% for(let i of product.images){ %>
+                    <img src="<%= i %>" alt="" height="150px" width="150px">
+                    <% } %> 
+                </div>
+        </div>
 
         <div class="mb-3 col-12">
             <label for="desc" class="form-label">Description</label>

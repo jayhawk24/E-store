@@ -137,7 +137,7 @@ Now you can run "npm start" in the terminal and the application should work.
 -   [ ] security checks
 -   [ ] strong validation login form and reviews
 -   [x] 404 pages
--   [ ] images upload
+-   [x] images upload
 -   [ ] review images upload
 -   [ ] quantity
 -   [ ] forgot password
