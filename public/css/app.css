@@ -21,7 +21,8 @@ a:hover {
     text-align: right;
 }
 .cards-container {
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;

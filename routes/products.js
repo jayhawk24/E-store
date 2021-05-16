@@ -116,7 +116,6 @@ router.patch(
             const { id } = req.params;
             const product = req.body.product;
             product.image = img;
-            console.log(product, req.files);
             await Product.findByIdAndUpdate(id, product);
             req.flash('success', 'Successfully updated product');
             res.redirect(`/product/${id}`);
