@@ -41,29 +41,5 @@ router.get('/orders/:id', isLoggedIn, isValid, async (req, res) => {
         res.status(500).render('error');
     }
 });
-router.post('/orders/:id', isLoggedIn, isValid, async (req, res) => {
-    try {
-        const { id } = req.params;
-        const user = await User.findById(id);
-        const order = new Order({
-            products: user.cart,
-            user: id,
-            txnId: '0000TESTID0000',
-            createdAt: Date.now(),
-            amount: req.session.amount
-        });
-        user.cart = [];
-
-        await order.save();
-        await user.save();
-
-        req.flash('Success', 'Successfully placed your order');
-        res.redirect(`/orders/${id}`);
-    } catch (err) {
-        console.log(err);
-        req.flash('error', 'Unable to place your order');
-        res.status(500).render('error');
-    }
-});
 
 module.exports = router;

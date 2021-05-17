@@ -13,6 +13,7 @@ const productRoutes = require('./routes/products');
 const authRoutes = require('./routes/auth');
 const cartRoutes = require('./routes/cart');
 const dashRoutes = require('./routes/dashboard');
+const paymentRoutes = require('./routes/payment');
 
 dotenv.config();
 app.use(express.urlencoded({ extended: true }));
@@ -110,6 +111,7 @@ app.use(productRoutes);
 app.use(authRoutes);
 app.use(cartRoutes);
 app.use(dashRoutes);
+app.use(paymentRoutes);
 
 app.get('/', (req, res) => {
     res.redirect('/products');

@@ -61,8 +61,28 @@
         </div>
         <div>
             <p>Total Cost: &#8377;<%= total %></p>
-            <form action="/orders/<%= currentUser._id %>" method="post">
-                <button class="btn btn-main <% if(!total){ %> disabled <% } %>">
+            <form action="/payment_gateway/payumoney" method="post">
+                <input
+                    class="con"
+                    type="hidden"
+                    name="phone"
+                    value="9999999999"
+                />
+                <input
+                    type="hidden"
+                    name="service_provider"
+                    value="payu_paisa"
+                />
+                <input
+                    type="hidden"
+                    class="product"
+                    name="productinfo"
+                    value="educational purpose"
+                />
+                <button
+                    type="submit"
+                    class="btn btn-main <% if(!total){ %> disabled <% } %>"
+                >
                     Place Order
                 </button>
             </form>
