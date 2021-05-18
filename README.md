@@ -30,7 +30,7 @@ The application is deployed to Heroku and can be accessed through the following 
 
 [E-Store on Heroku](https://estore24.herokuapp.com/)
 
-The website resembles a real store and you can add products to your cart and pay for them. If you want to try the application with all features login with admin@gmail.com : EBqAfxKJDAB2yPk
+The website resembles a real store and you can add products to your cart and pay for them. If you want to try the application with all features request me for admin creds.
 
 ## Technology
 
@@ -61,6 +61,8 @@ Users can do the following:
 -   A user must be logged in to review or add to cart etc...
 -   Checkout information is processed using stripe and the payment is send to the admin
 -   The profile contains all the orders a user has made
+-   Payment integration with payu
+-   Images upload with multer and cloudinary
 
 Admins can do the following:
 
