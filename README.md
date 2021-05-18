@@ -132,7 +132,7 @@ Now you can run "npm start" in the terminal and the application should work.
 
 -   [ ] Search
 -   [x] Categories
--   [ ] payment integration
+-   [x] payment integration
 -   [ ] wishlist
 -   [ ] security checks
 -   [ ] strong validation login form and reviews

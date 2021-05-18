@@ -139,12 +139,14 @@ router.delete('/product/:id', isLoggedIn, isAdmin, async (req, res) => {
         const product = await Product.findById(id);
 
         // Delete associated Reviews first then delete product
-
         await Review.deleteMany({
             _id: {
                 $in: product.reviews
             }
         });
+        for (let url of product.images) {
+            await cloudinary.uploader.destroy(url);
+        }
         await product.deleteOne({ _id: id });
 
         req.flash('success', 'Successfully deleted product');
