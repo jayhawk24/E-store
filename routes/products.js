@@ -7,6 +7,7 @@ const router = express.Router();
 const isLoggedIn = require('../middlewares/isLoggedIn');
 const isAdmin = require('../middlewares/isAdmin');
 const upload = require('../middlewares/multer');
+const cloudinary = require('../middlewares/cloudinary');
 
 router.use(methodOverride('_method'));
 
@@ -56,7 +57,8 @@ router.post(
             let img = [];
             if (req.files !== undefined) {
                 for (let i of req.files) {
-                    img.push(i.path.substring(6));
+                    const result = await cloudinary.uploader.upload(i.path);
+                    img.push(result.secure_url);
                 }
             }
             const newProd = req.body.product;
@@ -110,12 +112,15 @@ router.patch(
             let img = [];
             if (req.files !== undefined) {
                 for (let i of req.files) {
-                    img.push(i.path.substring(6));
+                    const result = await cloudinary.uploader.upload(i.path);
+                    img.push(result.secure_url);
                 }
             }
             const { id } = req.params;
             const product = req.body.product;
-            product.image = img;
+
+            if (img.length > 0) product.images = img;
+
             await Product.findByIdAndUpdate(id, product);
             req.flash('success', 'Successfully updated product');
             res.redirect(`/product/${id}`);

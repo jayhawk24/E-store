@@ -34,7 +34,6 @@ router.post('/payment_gateway/payumoney', isLoggedIn, (req, res) => {
 
     const sha = new jsSHA('SHA-512', 'TEXT');
     sha.update(hashString);
-    console.log(pay, hashString);
     const hash = sha.getHash('HEX');
 
     //We have to additionally pass merchant key to API
