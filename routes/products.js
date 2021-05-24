@@ -145,7 +145,9 @@ router.delete('/product/:id', isLoggedIn, isAdmin, async (req, res) => {
             }
         });
         for (let url of product.images) {
-            await cloudinary.uploader.destroy(url);
+            const imgName = url.split('/').pop().split('.')[0];
+            const res = await cloudinary.uploader.destroy(imgName);
+            console.log(res);
         }
         await product.deleteOne({ _id: id });
 
