@@ -9,7 +9,7 @@ router.get('/user/:id', isLoggedIn, isValid, async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findById(id);
-        res.render('dashboard/user', { user });
+        res.json({ user });
     } catch (err) {
         console.log(err);
         req.flash('error', 'forbidden');
@@ -20,9 +20,7 @@ router.patch('/user/:id', isLoggedIn, isValid, async (req, res) => {
     try {
         const { id } = req.params;
         await User.findByIdAndUpdate(id, req.body.user);
-        req.flash('success', 'Successfully updated your profile');
-
-        res.redirect(`/user/${id}`);
+        req.json({ success: 'Successfully updated your profile' });
     } catch (e) {
         console.log(err);
         req.flash('error', 'forbidden');
@@ -34,7 +32,7 @@ router.get('/orders/:id', isLoggedIn, isValid, async (req, res) => {
         const orders = await Order.find({ user: req.params.id }).populate(
             'products'
         );
-        res.render('dashboard/order', { orders });
+        res.json({ orders });
     } catch (err) {
         console.log(err);
         req.flash('error', 'Unable to fetch your orders');

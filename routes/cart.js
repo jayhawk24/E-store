@@ -12,7 +12,7 @@ router.get('/user/:userId/cart', isLoggedIn, async (req, res) => {
         cart.map((item) => {
             req.session.amount += item.price;
         });
-        res.render('cart/showCart', { cart });
+        res.json({ cart });
     } catch (err) {
         console.log(err);
         req.flash('error', 'Unable to get Cart.');
@@ -27,7 +27,7 @@ router.post('/user/:id/cart/', isLoggedIn, async (req, res) => {
 
         user.cart.push(product);
         await user.save();
-        req.flash('success', 'Successfully, added to cart');
+        req.json({ success: 'Successfully, added to cart' });
         res.redirect(`/product/${id}`);
     } catch (err) {
         console.log(err);
