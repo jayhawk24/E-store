@@ -20,10 +20,33 @@
 </section>
 
 <div class="mcontainer">
-    <div class="product-display">
-        <% for(let url of product.images){ %>
-        <img src="<%= url %> " alt="" />
-        <% }if( currentUser && currentUser.username==='admin@gmail.com'){ %>
+    <div class="carousel-container">
+        <div class="show" href="<%= product.images[0] %>">
+            <img src="<%= product.images[0] %>" id="show-img" />
+        </div>
+        <div class="small-img">
+            <img
+                src="/assets/online_icon_right@2x\.png"
+                class="icon-left"
+                alt=""
+                id="prev-img"
+            />
+            <div class="small-container">
+                <div id="small-img-roll">
+                    <% for(let url of product.images){ %>
+                    <img src="<%= url %> " alt="" class="show-small-img" />
+                    <% } %>
+                </div>
+            </div>
+            <img
+                src="/assets/online_icon_right@2x\.png"
+                class="icon-right"
+                alt=""
+                id="next-img"
+            />
+        </div>
+
+        <% if( currentUser && currentUser.username==='admin@gmail.com'){ %>
         <div class="admin">
             <a href="/product/<%= product.id %>/edit?_method=PATCH">
                 <button class="btn-main">Edit</button></a

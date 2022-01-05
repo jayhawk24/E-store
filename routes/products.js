@@ -21,6 +21,14 @@ router.get('/products', async (req, res) => {
         res.status(500).render('error');
     }
 });
+router.get('/carousel', async (req, res) => {
+    try {
+        res.render('products/carousel');
+    } catch (error) {
+        console.log(error);
+        res.status(500).render('error');
+    }
+});
 router.get('/product/:id', async (req, res) => {
     try {
         const { id } = req.params;
