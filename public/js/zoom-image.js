@@ -52,17 +52,18 @@
                 cursor: 'crosshair'
             });
 
-            var showPanel = $('<div>')
-                .css({
-                    display: 'none',
-                    position: 'absolute',
-                    overflow: 'hidden',
-                    left: imageW + paras.marginL,
-                    top: paras.marginT,
-                    width: paras.showPanelW,
-                    height: paras.showPanelH
-                })
-                .append(img);
+            var showPanel = $("<div>")
+              .css({
+                display: "none",
+                position: "absolute",
+                overflow: "hidden",
+                left: imageW + paras.marginL,
+                top: paras.marginT,
+                width: paras.showPanelW,
+                height: paras.showPanelH,
+                zIndex: "1000",
+              })
+              .append(img);
 
             self.append(layer).append(showPanel);
 
