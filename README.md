@@ -12,15 +12,6 @@ https://hacktoberfest.digitalocean.com/</p>
 
 ---
 
-### What can You contribute ⚠️
-
--   There are language Specific folders in the repository choose any you're comfortable with if not, make one.
--   Inside the language folder there will be multiple topic folders like Data Structures, Algorithms, Problems and projects.
--   Contribute any algorithm, data-structure implementation or your favourite problmes or projects.
--   Make sure your follow the below steps.
-
----
-
 ### Process are as follows :-
 
 -   Login using github @ [Hacktoberfest](https://hacktoberfest.digitalocean.com/)
